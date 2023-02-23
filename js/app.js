@@ -36,17 +36,17 @@ function renderImg() {
   imgOne.src = alienArray[imgOneIndex].image;
   imgOne.title = alienArray[imgOneIndex].name;
   imgOne.alt = `this is an image of ${alienArray[imgOneIndex].name}`;
-  alienArray[imgOneIndex].views = alienArray[imgOneIndex].views +1;
+  alienArray[imgOneIndex].views = alienArray[imgOneIndex].views + 1;
 
   imgTwo.src = alienArray[imgTwoIndex].image;
   imgTwo.title = alienArray[imgTwoIndex].name;
   imgTwo.alt = `this is an image of ${alienArray[imgTwoIndex].name}`;
-  alienArray[imgTwoIndex].views = alienArray[imgTwoIndex].views +1;
+  alienArray[imgTwoIndex].views = alienArray[imgTwoIndex].views + 1;
 
   imgThree.src = alienArray[imgThreeIndex].image;
   imgThree.title = alienArray[imgThreeIndex].name;
   imgThree.alt = `this is an image of ${alienArray[imgThreeIndex].name}`;
-  alienArray[imgThreeIndex].views = alienArray[imgThreeIndex].views +1;
+  alienArray[imgThreeIndex].views = alienArray[imgThreeIndex].views + 1;
 }
 
 function randomIndex() {
@@ -69,7 +69,6 @@ function handleImgClick(event) {
   if (votingRounds === 0) {
     imgContainer.removeEventListener('click', handleImgClick);
 
-  //document.getElementById('show-results-btn').style=visibility:visible';
   }
 }
 function handleShowResults() {
@@ -85,7 +84,6 @@ function handleShowResults() {
 }
 
 // **************** EXECUTABLE CODE
-
 let bag = new Alien('bag');
 let banana = new Alien('banana');
 let bathroom = new Alien('bathroom');
@@ -106,10 +104,11 @@ let unicorn = new Alien('unicorn');
 let waterCan = new Alien('water-can');
 let wineGlass = new Alien('wine-glass');
 
-
 alienArray.push(bag, banana, bathroom, boots, breakfast, bubblegum, chair, cthulhu, dogDuck, dragon, pen, petSweep, scissors, shark, sweep, tauntaun, unicorn, waterCan, wineGlass);
 
 renderImg();
 
 imgContainer.addEventListener('click', handleImgClick);
 resultsBtn.addEventListener('click', handleShowResults);
+
+//document.getElementById('show-results-btn').style=visibility:visible'; **LINE 72**
