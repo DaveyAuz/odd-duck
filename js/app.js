@@ -28,6 +28,7 @@ function renderImg() {
   let imgThreeIndex = randomIndex();
 
   while (imgOneIndex === imgTwoIndex || imgOneIndex === imgThreeIndex || imgTwoIndex === imgThreeIndex) {
+    imgOneIndex = randomIndex();
     imgTwoIndex = randomIndex();
     imgThreeIndex = randomIndex();
   }
@@ -93,17 +94,17 @@ let breakfast = new Alien('breakfast');
 let bubblegum = new Alien('bubblegum');
 let chair = new Alien('chair');
 let cthulhu = new Alien('cthulhu');
-let dogDuck = new Alien('dogDuck');
+let dogDuck = new Alien('dog-duck');
 let dragon = new Alien('dragon');
 let pen = new Alien('pen');
-let petSweep = new Alien('petSweep');
+let petSweep = new Alien('pet-sweep');
 let scissors = new Alien('scissors');
 let shark = new Alien('shark');
-let sweep = new Alien('sweep');
+let sweep = new Alien('sweep', 'png');
 let tauntaun = new Alien('tauntaun');
 let unicorn = new Alien('unicorn');
-let waterCan = new Alien('waterCan');
-let wineGlass = new Alien('wineGlass');
+let waterCan = new Alien('water-can');
+let wineGlass = new Alien('wine-glass');
 
 
 alienArray.push(bag, banana, bathroom, boots, breakfast, bubblegum, chair, cthulhu, dogDuck, dragon, pen, petSweep, scissors, shark, sweep, tauntaun, unicorn, waterCan, wineGlass);
