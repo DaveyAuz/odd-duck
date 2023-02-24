@@ -1,0 +1,20 @@
+
+html {
+text-align: center;
+
+}
+
+#img-container img {
+width: 400px; 
+height: 400px;
+border: 2px solid black;
+}
+
+main {
+margin-top: 50px;
+}
+
+body {
+  margin: 50px;
+
+}
