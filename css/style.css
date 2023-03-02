@@ -1,7 +1,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Acme&family=Archivo+Narrow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Audiowide&family=Babylonica&family=Catamaran:wght@100;200;300;400;500;600;700;800;900&family=Changa:wght@200;300;400;500;600;700;800&family=Crimson+Text&family=Exo+2:wght@300&family=Exo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Genos:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Libre+Barcode+39&family=Libre+Baskerville&family=Orbitron:wght@400;500;600;700;800;900&family=Oswald:wght@300&family=Rubik+Vinyl&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Special+Elite&display=swap');
-html {
-  text-align: center;
+
+
+*{text-align: center;
   font-family: "Space+Grotesk";
 }
 
@@ -9,6 +10,16 @@ html {
   width: 400px; 
   height: 400px;
   border: 2px solid black;
+} */
+
+body, html {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+svg {
+	width: 100%;
+	height: 101vh;
 }
 
 main {
@@ -20,3 +31,5 @@ body {
   
 }
 
+html {
+}
