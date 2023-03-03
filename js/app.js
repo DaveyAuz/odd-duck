@@ -32,7 +32,7 @@ function Alien(name, fileExtension = 'jpg') {
 // ? LOCAL STORAGE ADDITIONAL *
 // ? Step 3: Get Information from Local Storage
 let retrievedAlienArray = localStorage.getItem('alienArray');
-console.log(retrievedAlienArray);
+//console.log(retrievedAlienArray);
 
 function saveToLocalStorage() {
   localStorage.setItem('alienArray', JSON.stringify(alienArray));
@@ -61,7 +61,7 @@ if (retrievedAlienArray) {
   new Alien('unicorn');
   new Alien('water-can');
   new Alien('wine-glass');
-  saveToLocalStorage()
+  saveToLocalStorage();
   renderImg();
 
 }
@@ -70,23 +70,43 @@ if (retrievedAlienArray) {
 
 // ********** HELPER FUNCTIONS UTILITIES*********
 
+// function randomIndex() {
+//   return Math.floor(Math.random() * alienArray.length) + 1;
+// }
+let previousIndex = [];
 function randomIndex() {
-  return Math.floor(Math.random() * alienArray.length) + 1;
+  const index = new Set();
+  while (index.size < 3) {
+    const random = Math.floor(Math.random() * alienArray.length);
+    console.log(typeof random);
+    // index.add(random);
+    if (!index.has(random) && !previousIndex.includes(random)) {
+      console.log('if check  hit');
+      index.add(random);
+    }
+  }
+  const uniqueIndex = Array.from(index);
+  console.log(uniqueIndex);
+  // previousIndex = uniqueIndex;
+  return uniqueIndex;
 }
 function renderImg() {
+  const randomNum = randomIndex();
+  const [imgOneIndex, imgTwoIndex, imgThreeIndex] = randomNum;
+  console.log(randomNum);
   // TODO: 3 images on the page
-  let imgOneIndex = randomIndex();
-  let imgTwoIndex = randomIndex();
-  let imgThreeIndex = randomIndex();
+  // let imgOneIndex = randomIndex();
+  // let imgTwoIndex = randomIndex();
+  // let imgThreeIndex = randomIndex();
 
   // TODO: Make sure the images are unique
   // ** COMPARE IMG 1 & IMG 2 while they are the same get a new randomIndex
   // ** could you use another form of storage for indexes to do your validation against that? **
-  while (imgOneIndex === imgTwoIndex || imgOneIndex === imgThreeIndex || imgTwoIndex === imgThreeIndex) {
-    imgOneIndex = randomIndex();
-    imgTwoIndex = randomIndex();
-    imgThreeIndex = randomIndex();
-  }
+  // while (imgOneIndex === imgTwoIndex || imgOneIndex === imgThreeIndex || imgTwoIndex === imgThreeIndex) {
+  //   imgOneIndex = randomIndex();
+  //   imgTwoIndex = randomIndex();
+  //   imgThreeIndex = randomIndex();
+  // }
 
   imgOne.src = alienArray[imgOneIndex].image;
   imgOne.title = alienArray[imgOneIndex].name;
@@ -108,29 +128,6 @@ function renderImg() {
   alienArray[imgTwoIndex].views++;
   alienArray[imgThreeIndex].views++;
 }
-// let chartObj = {
-//   type: 'bar',
-//   data: {
-//     labels: alienNames,
-//     datasets: [{
-//       label: '# of Votes',
-//       data: alienVotes,
-//       borderWidth: 1
-//     },
-//     {
-//       label: '# of times Shown',
-//       data: alienShown,
-//       borderWidth: 1
-//     }]
-//   },
-//   options: {
-//     scales: {
-//       y: {
-//         beginAtZero: true
-//       }
-//     }
-//   }
-// };
 
 // *** 2 args for the Chart Constructor - canvas element, config obj with goat data
 //eslint-disable-line
@@ -180,57 +177,42 @@ function renderChart() {
     viewsArr.push(alien.views);
   }
   let chartObj = {
-    type: 'horizontalBar',
-    datasets: [
-      {
-        label: '# of Votes',
+    type: 'bar',
+    data: {
+      labels: nameArr,
+      datasets: [{
+        label: '# Of Votes',
         data: votesArr,
-        borderWidth: 1
-      },
-      {
-        label: '# of Names',
-        data: nameArr,
-        borderWidth: 1
+        borderWidth: 2.5,
+        backgroundColor: '#ff2800',
+        borderColor: '#FFF200'
       },
       {
         label: '# of Views',
         data: viewsArr,
-        borderWidth: 1
-      },
-    ],
+        borderWidth: 2.5,
+        backgroundColor: '#14F300',
+        borderColor: '#FFF200'
+      }]
+    },
     options: {
-      legend: {
-        display: false
-      },
       scales: {
-        xAxes: [{
+        y: {
+          beginAtZero: false,
           ticks: {
-            stepSize: 1,
-          },
-          gridLines: {
-            display: false,
+            fontSize: 36,
+            fontColor: 'rgba(228,35,0,1.00)',
           }
-        }]
+        }
       }
     }
   };
 
   let ctx = document.getElementById('my-chart').getContext('2d');
   let myChart = new Chart(ctx, chartObj);//eslint-disable-line
-
 }
-
-//renderImg();
 
 console.log('ref1', alienArray);
 
 imgContainer.addEventListener('click', handleImgClick);
-resultsBtn.addEventListener('click', handleShowResults);
-
-
-// if (votingRounds === 0) {
-//   renderResults();
-//   resultsBtn.removeEventListener('click', renderResults());
-// };
-
-// ? Get The Chat Working and Make Sure Images are not repeating. Tally Clicks.
+resultsBtn.addEventListener('click', renderChart);
