@@ -2,7 +2,7 @@
 
 // *************** GLOBALS
 let alienArray = [];
-let votingRounds = 5;
+let votingRounds = 25;
 
 // *************** DOM WINDOWS
 let imgContainer = document.getElementById('img-container');
