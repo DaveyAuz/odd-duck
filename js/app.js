@@ -3,6 +3,7 @@
 // *************** GLOBALS
 let alienArray = [];
 let votingRounds = 25;
+let previousIndex = [];
 
 // *************** DOM WINDOWS
 let imgContainer = document.getElementById('img-container');
@@ -40,7 +41,7 @@ function saveToLocalStorage() {
 if (retrievedAlienArray) {
   //  ? Step 4: Convert back to usable code
   alienArray = JSON.parse(retrievedAlienArray);
-  renderImg();
+  //renderImg();
 } else {
   new Alien('bag');
   new Alien('banana');
@@ -73,7 +74,7 @@ if (retrievedAlienArray) {
 // function randomIndex() {
 //   return Math.floor(Math.random() * alienArray.length) + 1;
 // }
-let previousIndex = [];
+
 function randomIndex() {
   const index = new Set();
   while (index.size < 3) {
@@ -81,13 +82,13 @@ function randomIndex() {
     console.log(typeof random);
     // index.add(random);
     if (!index.has(random) && !previousIndex.includes(random)) {
-      console.log('if check  hit');
+      console.log('if check hit');
       index.add(random);
     }
   }
   const uniqueIndex = Array.from(index);
   console.log(uniqueIndex);
-  // previousIndex = uniqueIndex;
+  previousIndex = uniqueIndex;
   return uniqueIndex;
 }
 function renderImg() {
